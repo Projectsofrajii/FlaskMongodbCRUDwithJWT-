@@ -20,7 +20,7 @@ secured:
     for update - email value with be taken from access token itself , so no need of passing as params
     so one user cant accesss others data(update/delete)
     only admin can see every data 
-    
+
 Available Endpoints/routes check on terminal --> flask --app path_CurrentFile() routes
 
         Endpoint         Methods  Rule
@@ -34,11 +34,82 @@ Available Endpoints/routes check on terminal --> flask --app path_CurrentFile() 
         static           GET      /static/<path:filename>
         update_template  PUT      /template/<string:template_id>
 
-# Template API 
+# API endpoints
+1.http://127.0.0.1:5678/user_register 
+    METHOD :POST 
+    HEADER: BEARER TOKEN
+    PAYLOAD : {
+        "first_name" : "rajii",
+        "last_name" : "r",
+        "email" : "rajii@gmail.com",
+        "password" : "rajii123"
+    }
+    Response:
+    {
+        "message": "Registered successfully"
+    }
 
-## Overview
-A Flask-based API to create, update, and delete templates.
+2. http://127.0.0.1:5678/user_login
+    METHOD :POST 
+    HEADER: BEARER TOKEN 
+    PAYLOAD : {
+        "email" : "rajii@gmail.com",
+        "password" : "rajii123"
+    }
+    Response: sample resonse
+    {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0MDcyNTk1MiwianRpIjoiNDUwOWEzNjctMTNmZC00MGY4LTlkNzItZDQ1ZmUxMmNhYTE0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImphY2tAZ21haWwuY29tIiwibmJmIjoxNzQwNzI1OTUyLCJjc3JmIjoiODRiNmFiZDEtMzE2Ni00ZTQyLTkwMTAtNzEwOTk5NWU4N2YwIiwiZXhwIjoxNzQwODEyMzUyfQ.XTA7uk9nBO1v0M_5LgG9NCOVEilQ5Mv0ALDAI2eir1M"
+    }
 
-## Screenshots
-### 1️⃣ API Response (Success)
-![API Response](images/success.png)
+3. create_template --> 
+    http://127.0.0.1:5678/template
+    METHOD :POST 
+    HEADER: BEARER TOKEN 
+    PAYLOAD : {
+    "template_name":"Password Reset",
+    "subject":"Reset Your Password",
+    "body":"Click here to reset your password."
+}
+    Response: sample resonse
+    {
+    "message": "Template created successfully"
+    }
+
+3. READ_template -->  http://127.0.0.1:5678/template
+    METHOD :GET 
+    HEADER: BEARER TOKEN 
+
+    Response: sample resonse
+    [
+    {
+        "body": "Congratulations.",
+        "subject": "job offer letter ",
+        "template_name": "cheers...",
+        "user_email": "rajii@gmail.com"
+    }]
+
+3.  UPDATE_template --> http://127.0.0.1:5678/template
+    METHOD :PUT 
+    HEADER: BEARER TOKEN 
+    PAYLOAD : {
+    "template_name":"cheers...",
+    "subject":"job offer letter ",
+    "body":"Congratulations."
+    }
+    Response: sample resonse
+    {
+    "message": "Updated Successfully."
+    }
+
+3.  DELETE_template -->http://127.0.0.1:5678/template
+    METHOD :POST 
+    HEADER: BEARER TOKEN 
+    PAYLOAD : {
+    "template_name":"Password Reset",
+    "subject":"Reset Your Password",
+    "body":"Click here to reset your password."
+    }
+    Response: sample resonse
+    {
+    "message": "Deleted Successfully."
+    }
