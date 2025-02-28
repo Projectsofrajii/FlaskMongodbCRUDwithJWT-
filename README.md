@@ -3,11 +3,11 @@
 MongoDB username : rajii ; password :1234
 1.Activate virtualenviroinment:
     on windows --> terminal/command prompt
-        1.Set-ExecutionPolicy Unrestricted -Scope Process
-        2..\.venv\Scripts\Activate
-        3.pip install -r requirements.txt --> To install required packages using
-        3.python .\FlaskAuth.py
-        4.http://127.0.0.1:5678 - hit the url
+        1. Set-ExecutionPolicy Unrestricted -Scope Process
+        2. .\.venv\Scripts\Activate
+        3. pip install -r requirements.txt --> To install required packages using
+        3. python .\FlaskAuth.py
+        4. http://127.0.0.1:5678 - hit the url
 
 point tobe noted:
 1.firewall disable if needed
@@ -101,7 +101,7 @@ Available Endpoints/routes check on terminal --> flask --app path_CurrentFile() 
     "message": "Updated Successfully."
     }
 
-3.  DELETE_template -->http://127.0.0.1:5678/template
+3.  DELETE_template --> http://127.0.0.1:5678/template
     METHOD :POST 
     HEADER: BEARER TOKEN 
     PAYLOAD : {
